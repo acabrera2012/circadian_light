@@ -32,6 +32,7 @@ while True:
                 m = subprocess.Popen(['python', 'music.py', str(lightDurationMins)])
 
                 # Use these to log temporarily during troubleshooting
+                # test
                 #subprocess.run(["python", "light.py", str(lightDurationMins), ">> /tmp/light.log"])
                 #subprocess.run(["python", "music.py", str(lightDurationMins), ">> /tmp/music.log"])
 
