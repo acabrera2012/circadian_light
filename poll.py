@@ -31,15 +31,12 @@ while True:
                 l = subprocess.Popen(['python', 'light.py', str(lightDurationMins)])
                 m = subprocess.Popen(['python', 'music.py', str(lightDurationMins)])
 
+                # Use these to log temporarily during troubleshooting
                 #subprocess.run(["python", "light.py", str(lightDurationMins), ">> /tmp/light.log"])
                 #subprocess.run(["python", "music.py", str(lightDurationMins), ">> /tmp/music.log"])
-                #subprocess.run(["python", "light.py", str(lightDurationMins), '&'])
-                #subprocess.run(["python", "music.py", str(lightDurationMins), '&'])
         else:
             print(str(datetime.now()) + " Nothing to do since startDateTime is in the past: " + str(startDateTime))
     else:
         print(str(datetime.now()) + " Nothing to do due to invalid startDateTime: " + str(startDateTime))
 
     time.sleep(pollSeconds)              # Wait before checking again
-
-
