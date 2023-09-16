@@ -34,6 +34,7 @@ while True:
                 # Use these to log temporarily during troubleshooting
                 #subprocess.run(["python", "light.py", str(lightDurationMins), ">> /tmp/light.log"])
                 #subprocess.run(["python", "music.py", str(lightDurationMins), ">> /tmp/music.log"])
+
         else:
             print(str(datetime.now()) + " Nothing to do since startDateTime is in the past: " + str(startDateTime))
     else:
