@@ -3,6 +3,7 @@ import memcache
 from datetime import datetime, timedelta
 import time
 import subprocess
+import os
 
 def main():
 
@@ -104,10 +105,14 @@ def get_schedule(title='Circadian Light Schedule', beginInHours=None, startingHo
             startingHour = startingMin = ampm = None
             memc.set("mem_light_start_date_time", 0)
             memc.set("mem_light_duration", 0)
-            print("Schedule cancelled")
+            print("Schedule canceled")
             infoMessage.update('Schedule canceled!')
             infoMessage.update(text_color='Yellow')
             infoMessage.update(visible=True)
+
+            # Run the light and music scripts to stop everything
+            l = subprocess.Popen(['python', 'light.py', '0'])
+            os.system('pkill -f music.py')
 
         if event == '-STARTINGHOUR-' or event == '-STARTINGMIN-':
             spin_value = values[event]

@@ -36,19 +36,20 @@ signal.signal(signal.SIGINT, keyboard_interrupt_handler)
 
 while True:
 
-    # Turn on screen
-    print("Turning on screen")
-    subprocess.run(["xset", "dpms", "force", "on"])
+    if lightDuration > 0:
+        # Turn on screen
+        print("Turning on screen")
+        subprocess.run(["xset", "dpms", "force", "on"])
 
-    # Send open command
-    send_command(b'\xA0' + b'\x01' + b'\x01' + b'\xA2')
+        # Send open command
+        send_command(b'\xA0' + b'\x01' + b'\x01' + b'\xA2')
 
-    # Sleep for the specified period
-    print("Lighting for " + str(lightDuration) + " minute(s)")
-    time.sleep(lightDuration * 60)                      # Multiply duration minutes arg by 60 for sleep seconds
+        # Sleep for the specified period
+        print("Lighting for " + str(lightDuration) + " minute(s)")
+        time.sleep(lightDuration * 60)                      # Multiply duration minutes arg by 60 for sleep seconds
     
-    # Turn off screen
-    print("Turning off screen")
-    subprocess.run(["xset", "dpms", "force", "off"])
+        # Turn off screen
+        print("Turning off screen")
+        subprocess.run(["xset", "dpms", "force", "off"])
 
     exit_gracefully()
